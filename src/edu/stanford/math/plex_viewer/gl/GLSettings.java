@@ -10,17 +10,17 @@ public class GLSettings {
 	public static final float[] defaultPointColor = new float[]{0.1f, 0.1f, 0.1f};
 	public static final float defaultBackgroundIntensity = 1.0f;
 	
-	private static final int defaultScreenWidth = 680;
-	private static final int defaultScreenHeight = 680;
+	private static final int defaultScreenWidth = 750;
+	private static final int defaultScreenHeight = 750;
 	
 	private static final GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	private static final GraphicsDevice device = environment.getDefaultScreenDevice();
 	private static final DisplayMode displaymode = device.getDisplayMode();
 	
-	private static final int fullScreenWidth = displaymode.getWidth();
-	private static final int fullScreenHeight = displaymode.getHeight();
+	private static final int fullScreenWidth = displaymode.getWidth()/2;
+	private static final int fullScreenHeight = displaymode.getHeight()/2;
 	
-	public static boolean useFullScreen = true;
+	public static boolean useFullScreen = false;
 	
 	public static int getScreenWidth() {
 		if (useFullScreen) {

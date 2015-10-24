@@ -107,7 +107,7 @@ public class SimplexStreamRenderer implements ObjectRenderer {
 				continue;
 			}
 
-			if (simplex.getDimension() <= 2) {
+			if (simplex.getDimension() <= 3) {
 				GLUtility.drawSimplex(gl, simplex, this.colorScheme, this.stream);
 			}
 			

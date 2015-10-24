@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.IntBuffer;
 
 import javax.imageio.ImageIO;
 import javax.media.opengl.GL;
@@ -86,6 +87,16 @@ public class OpenGLManager implements GLEventListener, KeyListener, MouseListene
 		this.renderer.init(gl);
 
 		gLDrawable.addKeyListener(this);
+		
+		
+		// just some stupid checking...
+		//IntBuffer ib = IntBuffer.allocate(1);
+		//gl.glGetIntegerv(GL.GL_ALIASED_LINE_WIDTH_RANGE, ib);
+		//System.out.println("GL_ALIASED_LINE_WIDTH_RANGE="+ib.get());
+		//ib.clear();
+		//gl.glGetIntegerv(GL.GL_LINE_WIDTH_RANGE, ib);
+		//System.out.println("GL_LINE_WIDTH_RANGE="+ib.get());
+
 	}
 
 	public void reshape(GLAutoDrawable gLDrawable, int x, int y, int width, int height) {
@@ -108,18 +119,26 @@ public class OpenGLManager implements GLEventListener, KeyListener, MouseListene
 	}
 
 	public void initialize() {
-		int width = GLSettings.getScreenWidth();
-		int height = GLSettings.getScreenHeight();
+		int width = GLSettings.getScreenWidth()/2;
+		int height = GLSettings.getScreenHeight()/2;
 
 		canvas.addGLEventListener(this);
 		frame.add(canvas);
 		frame.setSize(width, height);
-		frame.setUndecorated(true);
-		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		frame.setUndecorated(false);
+		//frame.setExtendedState(Frame.M   Frame.MAXIMIZED_BOTH);
 		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				exit();
-			}
+		    public void windowClosing(WindowEvent e) {
+			new Thread() {
+			    @Override 
+			    public void run() {
+				animator.stop(); // stop the animator loop
+				System.exit(0);
+			    }
+			}.start();
+			//animator.stop();
+			//exit();
+		    }
 		});
 		frame.setVisible(true);
 		animator.start();

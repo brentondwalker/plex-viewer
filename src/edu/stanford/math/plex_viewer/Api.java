@@ -7,6 +7,7 @@ import edu.stanford.math.plex4.streams.interfaces.AbstractFilteredStream;
 import edu.stanford.math.plex_viewer.gl.OpenGLManager;
 import edu.stanford.math.plex_viewer.rendering.MappingRenderer;
 import edu.stanford.math.plex_viewer.rendering.SimplexStreamRenderer;
+import edu.stanford.math.plex_viewer.rendering.CoverageComplexRenderer;
 import edu.stanford.math.primitivelib.autogen.formal_sum.DoubleSparseFormalSum;
 import edu.stanford.math.primitivelib.autogen.pair.ObjectObjectPair;
 
@@ -49,4 +50,15 @@ public class Api {
 		OpenGLManager openGLManager = new OpenGLManager(mappingViewer);
 		openGLManager.initialize();
 	}
+	
+	public static void drawCoverageComplex(AbstractFilteredStream<Simplex> ripsStream,
+											AbstractFilteredStream<Simplex> coverageStream,
+											AbstractFilteredStream<Simplex> cycleStream,
+											AbstractFilteredStream<Simplex> ripsCycleStream,											
+											double[][] domainPoints) {
+		CoverageComplexRenderer ccr = new CoverageComplexRenderer(ripsStream, coverageStream, cycleStream, ripsCycleStream, domainPoints);
+		OpenGLManager openGLManager = new OpenGLManager(ccr);
+		openGLManager.initialize();
+	}
 }
+
