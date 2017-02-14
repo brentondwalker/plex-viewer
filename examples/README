@@ -8,17 +8,21 @@ To run the examples use one of the following:
 
 ./run_x86.sh -complex rips_simplices.txt -points rips_points.txt
 
-The commands to manipulate the image are as follows"
+The commands to manipulate the image are as follows:
 
 arrow keys	-	rotates the object
 page up/down	-	zoom in/out
 numpad 8/2	-	increase/decrease filtration parameter
 space bar	-	capture screen output to file
 
+(Changes to the filtration parameter may not be visible at first;
+zoom in and keep increasing the value until you see changes.)
 
 =============
 Pov Rendering
 =============
+
+To do Pov rendering, you need 'povray' installed: http://www.povray.org/
 
 Run the following commands:
 
