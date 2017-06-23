@@ -151,8 +151,8 @@ public class CoverageComplexRenderer implements ObjectRenderer {
 					continue;
 				}
 
-				if (simplex.getDimension() <= 3) {
-					GLUtility.drawSimplexT(gl, simplex, this.ripsColorScheme, this.ripsStream, 0.5f);
+				if (simplex.getDimension() <= 2) {
+					GLUtility.drawSimplexT(gl, simplex, this.ripsColorScheme, this.ripsStream, 0.1f);
 				}
 
 				simplexCount++;
