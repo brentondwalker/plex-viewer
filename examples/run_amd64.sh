@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CPATH="plex-viewer.jar:../lib/ext/gluegen-rt.jar:../lib/ext/jogl.jar"
+CPATH="plex-viewer.jar:../lib/ext/gluegen-rt.jar:../lib/ext/jogl.jar:../lib/javaplex.jar"
 LPATH="../lib/ext/amd64/"
 
 java -cp $CPATH \
